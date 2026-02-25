@@ -1,7 +1,7 @@
-from rest_framework import generics
+from rest_framework.viewsets import ModelViewSet
 from .models import News
-from .serializers import NewsSerializer
+from .serializers import NewsSerializer    
 
-class NewsListAPIView(generics.ListAPIView):
-    queryset = News.objects.all().order_by('-date')  # latest first
-    serializer_class = NewsSerializer     
+class NewsViewSet(ModelViewSet):
+    queryset = News.objects.all().order_by("-date")
+    serializer_class = NewsSerializer                
