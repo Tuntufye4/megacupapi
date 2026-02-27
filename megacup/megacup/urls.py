@@ -8,7 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('api/', include('highlights.urls')),  # your app URLs
-    path('api/', include('news.urls')),  
+    path('api/', include('news.urls')), 
+    path('api/', include('tournament.urls')),             
 ]   
            
 if settings.DEBUG:

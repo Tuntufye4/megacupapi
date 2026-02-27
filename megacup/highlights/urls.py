@@ -1,6 +1,7 @@
-from django.urls import path
-from .views import HighlightListAPIView
+from rest_framework.routers import DefaultRouter
+from .views import HighlightsViewSet
 
-urlpatterns = [
-    path('highlights/', HighlightListAPIView.as_view(), name='highlights-list'),
-]    
+router = DefaultRouter()
+router.register(r"highlights", HighlightsViewSet)              
+
+urlpatterns = router.urls               

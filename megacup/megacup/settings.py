@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',  # ✅ added for CORS
     'highlights',     
-    'news',     # your app
+    'news',  
+    'tournament',     # your app
 ]
 
 MIDDLEWARE = [

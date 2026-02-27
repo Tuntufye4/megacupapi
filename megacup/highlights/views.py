@@ -1,7 +1,7 @@
-from rest_framework import generics
-from .models import Highlight
-from .serializers import HighlightSerializer
+from rest_framework.viewsets import ModelViewSet
+from .models import Highlights
+from .serializers import HighlightsSerializer   
 
-class HighlightListAPIView(generics.ListAPIView):
-    queryset = Highlight.objects.all().order_by('-date')  # latest first
-    serializer_class = HighlightSerializer       
+class HighlightsViewSet(ModelViewSet):   
+    queryset = Highlights.objects.all().order_by("-date")
+    serializer_class = HighlightsSerializer                                               
