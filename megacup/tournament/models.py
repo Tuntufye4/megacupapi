@@ -11,8 +11,8 @@ class Tournament(models.Model):
     # Scores (optional)
     home_score = models.IntegerField(null=True, blank=True)
     away_score = models.IntegerField(null=True, blank=True)
-
-    # Match details
+   
+    # Match details   
     match_date = models.DateTimeField()
     venue = models.CharField(max_length=150, blank=True)
     description = models.TextField(blank=True)   
@@ -21,4 +21,4 @@ class Tournament(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):        
-        return f"{self.home_team} vs {self.away_team} (Group {self.group_name})"
+        return f"{self.home_team} vs {self.away_team} (Group {self.group_name})"  

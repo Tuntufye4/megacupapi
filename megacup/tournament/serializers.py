@@ -14,6 +14,7 @@ class TournamentSerializer(serializers.ModelSerializer):
             "match_date",
             "venue",
             "description",
-            "created_at",
+            "created_at",  
             "updated_at",
-        ]      
+        ]
+        read_only_fields = ("created_at", "updated_at")    
