@@ -6,19 +6,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-j1-=_g6-66_rkr8e(a=713hl+9l7v+%y35e$+de+3vu1_=2##a'
-
+    
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True                      
 
-ALLOWED_HOSTS = ['megacupapi.onrender.com','localhost', '127.0.0.1']          
+ALLOWED_HOSTS = ['megacupapi.onrender.com']                  
 
-# Application definition
+# Application definition   
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.messages',       
     'django.contrib.staticfiles',
 
     'rest_framework',
@@ -38,6 +38,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True    
 
 ROOT_URLCONF = 'megacup.urls'
 
