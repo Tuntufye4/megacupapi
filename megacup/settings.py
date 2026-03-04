@@ -26,7 +26,13 @@ INSTALLED_APPS = [
     'highlights',     
     'news',  
     'tournament',     # your app
-]
+]        
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite dev server
+]         
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # ✅ must be first
