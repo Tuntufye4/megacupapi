@@ -8,9 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j1-=_g6-66_rkr8e(a=713hl+9l7v+%y35e$+de+3vu1_=2##a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True                      
 
-ALLOWED_HOSTS = ['*']          
+ALLOWED_HOSTS = ['megacupapi.onrender.com','localhost', '127.0.0.1']          
 
 # Application definition
 INSTALLED_APPS = [

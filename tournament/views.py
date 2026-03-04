@@ -13,23 +13,23 @@ class TournamentViewSet(viewsets.ModelViewSet):
     search_fields = ["group_name", "home_team", "away_team"]
 
     # ---------------- Upcoming Matches ----------------
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=["get"], url_path="upcoming")
     def upcoming(self, request):
         now = timezone.now()
         upcoming_matches = Tournament.objects.filter(match_date__gt=now).order_by("match_date")
         serializer = self.get_serializer(upcoming_matches, many=True)
         return Response(serializer.data)
                  
-    # GET /tournament/previous/
-    @action(detail=False, methods=["get"])
-    def previous_match(self, request):
+    # ---------------- Previous Matches ----------------
+    @action(detail=False, methods=["get"], url_path="previous")
+    def previous_match(self, request):  
         now = timezone.now()
         previous_matches = Tournament.objects.filter(match_date__lt=now).order_by("-match_date")
         serializer = self.get_serializer(previous_matches, many=True)
         return Response(serializer.data)
 
     # ---------------- Group Matches ----------------
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=["get"], url_path="group")
     def group(self, request):
         group_name = request.query_params.get("name")
         if not group_name:
@@ -39,7 +39,7 @@ class TournamentViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     # ---------------- Next Match ----------------
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=["get"], url_path="next")
     def next_match(self, request):
         now = timezone.now()
         next_match = Tournament.objects.filter(match_date__gt=now).order_by("match_date").first()
@@ -49,11 +49,11 @@ class TournamentViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     # ---------------- Results / Standings ----------------
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=["get"], url_path="results")
     def results(self, request):
         group_name = request.query_params.get("group")
         matches = self.queryset
-        if group_name:
+        if group_name:   
             matches = matches.filter(group_name__iexact=group_name)
 
         # Only consider matches with valid scores
@@ -101,7 +101,7 @@ class TournamentViewSet(viewsets.ModelViewSet):
                 home["pts"] += 1
                 away["d"] += 1
                 away["pts"] += 1
-   
+
         # Convert to list and sort by points, gd, gf
         results = sorted(table.values(), key=lambda x: (-x["pts"], -x["gd"], -x["gf"]))
 
